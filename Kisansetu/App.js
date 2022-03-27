@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+// import * as firebase from "firebase";
+
+// // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyC0C-8pt6NlSsdTMqM7ypsYNLmMfa2w8Mg",
+//   authDomain: "kisansetuproject.firebaseapp.com",
+//   projectId: "kisansetuproject",
+//   storageBucket: "kisansetuproject.appspot.com",
+//   messagingSenderId: "571200743429",
+//   appId: "1:571200743429:web:a751746761fb4851e9546c"
+// };
+
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+
+import SignInSelectLanguage from './src/screens/SignInSelectLaunguage';
+import SignInMobileNumber from './src/screens/SignInMobileNumber';
+import App from './src/screens/MobileSignin'
+
+const navigator = createStackNavigator(
+  {
+    // Home: HomeScreen,
+    Signin1: SignInSelectLanguage,
+    Signin2: SignInMobileNumber,
+    app: App,
+
   },
-});
+  {
+    initialRouteName: 'app',
+    defaultNavigationOptions: {
+      title: 'App',
+    },
+  },
+);
+
+export default createAppContainer(navigator)
