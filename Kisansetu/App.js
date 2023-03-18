@@ -19,6 +19,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import SignInSelectLanguage from './src/screens/SignInSelectLaunguage';
 import SignInMobileNumber from './src/screens/SignInMobileNumber';
+import HomeScreen from './src/screens/HomeScreen';
 import App from './src/screens/MobileSignin'
 
 const navigator = createStackNavigator(
@@ -26,13 +27,14 @@ const navigator = createStackNavigator(
     // Home: HomeScreen,
     Signin1: SignInSelectLanguage,
     Signin2: SignInMobileNumber,
-    app: App,
+    Home: HomeScreen,
+    App: App,
 
   },
   {
-    initialRouteName: 'app',
+    initialRouteName: 'Signin1',
     defaultNavigationOptions: {
-      title: 'App',
+      title: 'KisanSetu',
     },
   },
 );

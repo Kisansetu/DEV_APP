@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { SafeAreaView, Text, TextInput, TouchableOpacity } from "react-native";
 
 import firebase from "../firebase";
+import { getAuth, signInWithPhoneNumber } from "firebase/auth";
+
+const auth = getAuth();
+auth.languageCode = 'it'
 
 export default App = () => {
 
@@ -9,13 +13,18 @@ export default App = () => {
     const [code, setCode] = useState('');
     const [verificationId, setVerificationId] = useState(null);
     const recaptchaVerifier = useRef(null);
+    // const recaptchaVerifier = React.useRef(null);
 
     // Function to be called when requesting for a verification code
     const sendVerification = () => { 
-        const phoneProvider = new firebase.auth.PhoneAuthProvider();
-        phoneProvider
+        try {
+            const phoneProvider = new firebase.auth.PhoneAuthProvider();
+            phoneProvider
             .verifyPhoneNumber(phoneNumber, recaptchaVerifier.current)
             .then(setVerificationId);
+        } catch (error) {
+            alert(error);
+        }
      };
     
     // Function to be called when confirming the verification code that we received
@@ -31,6 +40,8 @@ export default App = () => {
             .then((result) => {
               // Do something with the results here
               console.log(result);
+              // navigate to home screen
+              //navigation.navigate('Home')
             });
         
      };

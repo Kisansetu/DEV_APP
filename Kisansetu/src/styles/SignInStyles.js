@@ -14,10 +14,9 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     instructions1: {
-      color: '#000',
-      fontSize: 12,
-      marginBottom: 1,
-      justifyContent: 'flex-start'
+        textAlign: 'center',
+        fontSize: 10,
+        color: '#A9A9A9',
     },
     numberText: {
       borderBottomColor: '#777',
